@@ -2,14 +2,21 @@
 
 You're on a team of engineers working on a python codebase, and you notice that disorganization in the code is interferring with your ability to work. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
 
-The true rewards of a repo facelift materialize long-term as exponential growth in the rate at which you're able to deliver value to your team and to the world. However, consider carefully how to sell any facelift-related work to sell to management:
-- Do not: be too optimistic about asking others to prioritize facelift-type work for you. Priorities from above are usually more focused on the next feature or bug fix than on code quality.
+A repo facelift in the best case unlocks long-term exponential growth in your team's ability to deliver software. However, consider carefully how to "sell" any facelift-related work:
+- Do not: Expect it to be easy to convince others to prioritize facelift-type work. Pressures from above are usually more focused on the next feature or bug fix than on anything as vague as code "quality".
 - Do: Emphasize any improvements that have an obvious and measurable impact on the team's deliverables.
 - Do: Handle most other improvements as a kind of "overhead" to gradually address over time in parallel with deliverables.
 
-This guide only a reference point and takes an opinionated one-size-fits-all approach to describe an "ideal" repository structure. For instance, we'll assume that your team uses Git and GitHub. Alternatives to many of our choices may be valid for certain contexts.
+This guide takes an opinionated one-size-fits-all approach to describe an "ideal" repository structure, beginning with the assumption that your team uses Git and GitHub. Of course, alternatives to many of our choices are valid depending on context.
 
-## High-Level Priorities
+## Facelift Process Overview
+
+Use this three-phase process to organize your facelift efforts:
+1. Grok the bigger picture: Clarify the purpose and scope of your repo and team and why your facelift matters in that context.
+1. Configure automated tools for linting, formatting, type checking, unit testing, packaging, and dependency management.
+1. Finally, tackle the harder tech debt issues that can't easily be solved with automated code quality tooling.
+
+Automated tools (2) are the main focus of this guide. The subsections below will remark only briefly on (1) and (3).
 
 ### Preliminaries: Clarity of Purpose, Team Work, and Direction
 
@@ -22,10 +29,6 @@ Prior to actions that affect code, these preliminary steps focus your work in te
 3. **Clarify your team's coding standards**, including things like style guides, testing requirements, and documentation expectations:
     - If no standards have been adopted yet, don't get distracted with trying to create a perfect set of standards or pre-emptively win a lot of buy-in from the team. However, take a moment to share basic guidelines.
     - If strong standards are already in place, review them carefully to understand how the remainder of this guide may need to be adapted to fit within them.
-
-### Apply Best-Available Tooling
-
-Tooling recommendations -- and the order in which to apply them -- are the main focus of this guide: See the dedicated Tooling Recommendations section.
 
 ### Burn Down Tech Debt in the Code Base
 
