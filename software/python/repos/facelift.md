@@ -1,14 +1,13 @@
 # Python Repo Facelift How-To
 
-You just joined a team working on a python repository and notice that the codebase is a bit messy. You realize that now -- before you've become too immersed in critical-path projects and urgent deadlines -- is a unique opportunity to launch a repo "facelift". Here is your step-by-step guide to operating as quickly as possible and with minimal interruption to your team.
+You're on a team of engineers working on a python codebase, and you notice that disorganization in the code is interferring with your ability to work. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
 
-Consider carefully how to "sell" any facelift-related work to sell to management:
-- Note that management is often not in the best position to prioritize facelift-type work for you; they are often more focused on the next feature or bug fix than on long-term improvements.
-- Emphasize any improvements that would have an obvious and measurable impact on the team's deliverables.
-- Handle most other improvements as a kind of "overhead" to gradually address over time in parallel with deliverables.
-- In sum, don't expect to be thanked for this work. The true rewards materialize as exponential growth in the rate at which you're able to deliver value to your team and to the world.
+The true rewards of a repo facelift materialize long-term as exponential growth in the rate at which you're able to deliver value to your team and to the world. However, consider carefully how to sell any facelift-related work to sell to management:
+- Do not: be too optimistic about asking others to prioritize facelift-type work for you. Priorities from above are usually more focused on the next feature or bug fix than on code quality.
+- Do: Emphasize any improvements that have an obvious and measurable impact on the team's deliverables.
+- Do: Handle most other improvements as a kind of "overhead" to gradually address over time in parallel with deliverables.
 
-This guide takes an opinionated one-size-fits-all approach to describe an "ideal" repository structure as a reference point. (For example, it's assumed that your team uses Git and GitHub.) Valid alternatives may exist based on your specific context.
+This guide only a reference point and takes an opinionated one-size-fits-all approach to describe an "ideal" repository structure. For instance, we'll assume that your team uses Git and GitHub. Alternatives to many of our choices may be valid for certain contexts.
 
 ## High-Level Priorities
 
