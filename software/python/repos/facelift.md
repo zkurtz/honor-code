@@ -34,7 +34,7 @@ Prior to actions that affect code, these preliminary steps focus your work in te
 
 The remaining work is the hardest and most time-consuming part of the repo facelift, in no particular order:
 - Identify gaps in unit testing.
-- Review the list of files that currently fail the automated code quality checks.
+- Review the list of files that currently fail automated code quality checks.
 - Identify gaps between software architecture best practices and the current codebase.
 - Of the above tasks, define at least a vague prioritization of tech debt paydown tasks and start working on them.
 
