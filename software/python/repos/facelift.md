@@ -43,17 +43,35 @@ The remaining work is the hardest and most time-consuming part of the repo facel
 
 The following subsections are ordered to minimize the amount of time spent on setup and to maximize the impact of the changes, supposing you don't have time to do everything at once.
 
+### Package/project/environment management
+
+Update the repo to rely on `uv` for all package management and project management tasks.
+1. Install uv
+1. Run `uv init` to create a `pyproject.toml` file if you don't already have one. If you already have a `pyproject.toml` and are using
+    1. `poetry`, then follow this [poetry-to-uv guide](https://www.loopwerk.io/articles/2024/migrate-poetry-to-uv/).
+    1. `pipenv`, then follow this [pipenv-to-uv guide](https://medium.com/clarityai-engineering/migrating-from-pipenv-pipfile-to-uv-59ba2846636f).
+    1. only a `requirements.txt` file, transfer all of that into the `uv.lock` and get rid of `requirements.txt`, as suggested [here](https://github.com/astral-sh/uv/issues/6275#issuecomment-2343641976).
+1. Create a `.python-version` file to specify the Python version that your repo uses.
+1. Remove any references to the following tools (uv has you covered, and should run 10x faster in general):
+    - `pip`
+    - `pipenv`
+    - `poetry`
+    - `requirements.txt`
+    - `python -m venv ...`
+    - `pyenv`
+
+Update your README.md file to clarify how to create and activate a virtual environment for the project. In many cases, [this gist](../envs/create_uv_venv.sh) will suffice.
+
+
 ### Automation of Code Quality
 
-Use `debtcloset` to grandfather in automated code quality tooling, prioritizing just two tools:
-- `ruff` for formatting and linting
-- `pyright` for type checking
+1. Do `uv install debtcloset` 
+1. Use `debtcloset` to grandfather in automated code quality tooling, prioritizing just two tools:
+    1. `ruff` for formatting and linting
+    1. `pyright` for type checking
 
 Then set up pre-commit hooks.
 
-### Package/project management
-
-Update the repo to rely on `uv` for all package management and project management tasks.
 
 ### Continuous Integration
 
