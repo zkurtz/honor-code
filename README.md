@@ -7,4 +7,4 @@ Definitions:
 - honor = goodness, integrity, reliability, etc. Some codes are more honorable than others.
 - should/must/may in these documents follows [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
-`honor code` is the open source project that inspired the Honor Code, LLC consultancy.
+`honor code` is the open source project that inspired the [Honor Code consultancy](https://github.com/zkurtz/honor-code/wiki/Honor-Code-%5Bfuture-LLC%5D).
