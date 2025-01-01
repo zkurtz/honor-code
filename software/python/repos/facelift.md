@@ -27,7 +27,7 @@ Prior to actions that affect code, these preliminary steps focus your work in te
     - If applicable, set up a branch protection rule to require code reviews before merging.
     - Check the box to automatically delete head branches after merging.
 3. **Clarify your team's coding standards**, including things like style guides, testing requirements, and documentation expectations:
-    - If no standards have been adopted yet, don't get distracted with trying to create a perfect set of standards or pre-emptively win a lot of buy-in from the team. However, take a moment to share basic guidelines.
+    - If no standards have been adopted yet, consider introducing a brief standards document to start the process of alignment with the rest of your team. (But don't get distracted with creating a perfect set of standards or pre-emptively winning total buy-in from the team.)
     - If strong standards are already in place, review them carefully to understand how the remainder of this guide may need to be adapted to fit within them.
 
 ### Burn Down Tech Debt in the Code Base
