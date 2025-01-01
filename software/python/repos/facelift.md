@@ -1,6 +1,6 @@
 # Python Repo Facelift How-To
 
-You're on a team of engineers working on a python codebase, and you notice that disorganization in the code is interfering with your ability to work. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
+You notice that disorganization in your repo is harming your team's morale and productivity. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
 
 A repo facelift in the best case unlocks long-term exponential growth in your team's ability to deliver software. However, consider carefully how to "sell" any facelift-related work:
 - Do not: Expect it to be easy to convince others to prioritize facelift-type work. Pressures from above are usually more focused on the next feature or bug fix than on anything as vague as code "quality".
