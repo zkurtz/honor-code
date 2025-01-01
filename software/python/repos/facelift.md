@@ -45,33 +45,53 @@ The following subsections are ordered to minimize the amount of time spent on se
 
 ### Package/project/environment management
 
-Update the repo to rely on `uv` for all package management and project management tasks.
-1. Install uv
+Update the repo to rely on `uv` for all package/project/environment management tasks:
+1. [Install uv](https://docs.astral.sh/uv/getting-started/installation/).
+1. Do `rm -r .venv` to remove any existing virtual environment (and deactivate it if it's active).
 1. Run `uv init` to create a `pyproject.toml` file if you don't already have one. If you already have a `pyproject.toml` and are using
-    1. `poetry`, then follow this [poetry-to-uv guide](https://www.loopwerk.io/articles/2024/migrate-poetry-to-uv/).
-    1. `pipenv`, then follow this [pipenv-to-uv guide](https://medium.com/clarityai-engineering/migrating-from-pipenv-pipfile-to-uv-59ba2846636f).
-    1. only a `requirements.txt` file, transfer all of that into the `uv.lock` and get rid of `requirements.txt`, as suggested [here](https://github.com/astral-sh/uv/issues/6275#issuecomment-2343641976).
-1. Create a `.python-version` file to specify the Python version that your repo uses.
+    - `poetry`, then follow this [poetry-to-uv guide](https://www.loopwerk.io/articles/2024/migrate-poetry-to-uv/).
+    - `pipenv`, then follow this [pipenv-to-uv guide](https://medium.com/clarityai-engineering/migrating-from-pipenv-pipfile-to-uv-59ba2846636f).
+    - a `requirements.txt` file, transfer all of that into the `uv.lock` and get rid of `requirements.txt`, as suggested [here](https://github.com/astral-sh/uv/issues/6275#issuecomment-2343641976).
+1. Run `uv sync` to pin all dependencies in the `uv.lock` file, which will be git-tracked in your repo.
+1. [Run](https://docs.astral.sh/uv/concepts/python-versions/#python-version-files) `uv python pin` to create a `.python-version` file to lock the python version for your repo. Simply edit that file manually and rerun `uv sync` if you ever need to change the python version.
 1. Remove any references to the following tools (uv has you covered, and should run 10x faster in general):
-    - `pip`
-    - `pipenv`
+    - `pip`, `pipx`, `pipenv`
     - `poetry`
-    - `requirements.txt`
-    - `python -m venv ...`
-    - `pyenv`
+    - `pyenv` including the `virtualenv` plugin
+    - native python virtual env creation like `python -m venv ...` 
 
-Update your README.md file to clarify how to create and activate a virtual environment for the project. In many cases, [this gist](../envs/create_uv_venv.sh) will suffice.
+Update your repo README.md file to clarify how to create and activate a virtual environment for the project. In many cases, [this gist](../envs/create_uv_venv.sh) will suffice.
 
 
 ### Automation of Code Quality
 
-1. Do `uv install debtcloset` 
-1. Use `debtcloset` to grandfather in automated code quality tooling, prioritizing just two tools:
-    1. `ruff` for formatting and linting
-    1. `pyright` for type checking
+Install static analysis code quality tools:
+```bash
+uv install ruff --group dev
+uv install pyright --group dev
+uv install debtcloset --group dev
+```
 
-Then set up pre-commit hooks.
+Create a simple python script `exclude_qa_failing_modules.py` somewhere in your repo like
+```python
+from debtcloset.pyright.toml import exclude
+exclude(required_exclusions=[".venv/*", ".tox/*"])
 
+from debtcloset.pyright.toml import exclude
+exclude()
+```
+and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This should update your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to control proliferation of rule violations in all new modules that are added to the repo.
+
+Finally, set up `pre-commit` hooks to run these tools on every commit:
+```bash
+uv install pre-commit --group dev
+uv run pre-commit install
+```
+
+Activate your environment (as a habit, when working in your repo) to ensure that pre-commit is available to be used when you commit code:
+```bash
+source .venv/bin/activate
+``` 
 
 ### Continuous Integration
 
