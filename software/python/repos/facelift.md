@@ -1,6 +1,6 @@
 # Python Repo Facelift How-To
 
-You're on a team of engineers working on a python codebase, and you notice that disorganization in the code is interferring with your ability to work. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
+You're on a team of engineers working on a python codebase, and you notice that disorganization in the code is interfering with your ability to work. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
 
 A repo facelift in the best case unlocks long-term exponential growth in your team's ability to deliver software. However, consider carefully how to "sell" any facelift-related work:
 - Do not: Expect it to be easy to convince others to prioritize facelift-type work. Pressures from above are usually more focused on the next feature or bug fix than on anything as vague as code "quality".
@@ -8,6 +8,14 @@ A repo facelift in the best case unlocks long-term exponential growth in your te
 - Do: Handle most other improvements as a kind of "overhead" to gradually address over time in parallel with deliverables.
 
 This guide takes an opinionated one-size-fits-all approach to describe an "ideal" repository structure, beginning with the assumption that your team uses Git and GitHub. Of course, alternatives to many of our choices are valid depending on context.
+
+Table of contents:
+- [Facelift Process Overview](#facelift-process-overview)
+- [Tooling Recommendations](#tooling-recommendations)
+    - [Package/project/environment management](#packageprojectenvironment-management)
+    - [Automation of Code Quality](#automation-of-code-quality)
+    - [Continuous Integration](#continuous-integration)
+    - [Package Build and Distribution Strategy](#package-build-and-distribution-strategy)
 
 ## Facelift Process Overview
 
@@ -27,7 +35,7 @@ Prior to actions that affect code, these preliminary steps focus your work in te
     - If applicable, set up a branch protection rule to require code reviews before merging.
     - Check the box to automatically delete head branches after merging.
 3. **Clarify your team's coding standards**, including things like style guides, testing requirements, and documentation expectations:
-    - If no standards have been adopted yet, consider introducing a brief standards document to start the process of alignment with the rest of your team. (But don't get distracted with creating a perfect set of standards or pre-emptively winning total buy-in from the team.)
+    - If no standards have been adopted yet, consider introducing a brief standards document to start the process of alignment with the rest of your team. (But don't get distracted with creating a perfect set of standards or preemptively winning total buy-in from the team.)
     - If strong standards are already in place, review them carefully to understand how the remainder of this guide may need to be adapted to fit within them.
 
 ### Burn Down Tech Debt in the Code Base
@@ -36,8 +44,7 @@ The remaining work is the hardest and most time-consuming part of the repo facel
 - Identify gaps in unit testing.
 - Review the list of files that currently fail automated code quality checks.
 - Identify gaps between software architecture best practices and the current codebase.
-- Of the above tasks, define at least a vague prioritization of tech debt paydown tasks and start working on them.
-
+- Of the above tasks, decide your prioritization and get started fixing things.
 
 ## Tooling Recommendations
 
@@ -72,6 +79,10 @@ uv install pyright --group dev
 uv install debtcloset --group dev
 ```
 
+Copy-paste the following configurations to `pyproject.toml`:
+- [pyright](../devtools/pyright_pyproject.toml)
+- [ruff](../devtools/ruff_pyproject.toml)
+
 Create a simple python script `exclude_qa_failing_modules.py` somewhere in your repo like
 ```python
 from debtcloset.pyright.toml import exclude
@@ -80,7 +91,7 @@ exclude(required_exclusions=[".venv/*", ".tox/*"])
 from debtcloset.pyright.toml import exclude
 exclude()
 ```
-and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This should update your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to control proliferation of rule violations in all new modules that are added to the repo.
+and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This updates your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to control proliferation of rule violations in all new modules that are added to the repo.
 
 Finally, set up `pre-commit` hooks to run these tools on every commit:
 ```bash
@@ -98,6 +109,7 @@ source .venv/bin/activate
 Create/update GitHub continuous integration workflows, including:
 - Unit testing
 - Code quality checks
+- TODO: add more here, including links to good github workflow examples.
 
 ### Package Build and Distribution Strategy
 
@@ -105,5 +117,6 @@ If the repo defines a package to be importable in other projects/repos:
 - Clarify/update the package build system.
 - Create a GitHub workflow to run unit tests off of a package build & install step (which can catch different kinds of errors than running tests directly off of the source code).
 - Clarify the package version management strategy, including:
-    - How to update the version number
+    - How to auto-update the version number for minor version updates [TODO: link to a guide]
     - How to publish the package to a package index (e.g., PyPI or an internal index)
+- TODO: add more here, including links to good github workflow examples.
