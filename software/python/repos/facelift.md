@@ -11,6 +11,8 @@ This guide takes an opinionated one-size-fits-all approach to describe an "ideal
 
 Table of contents:
 - [Facelift Process Overview](#facelift-process-overview)
+    - [Preliminaries: Clarity of Purpose, Team Work, and Direction](#preliminaries-clarity-of-purpose-team-work-and-direction)
+    - [Burn Down Tech Debt](#burn-down-tech-debt)
 - [Tooling Recommendations](#tooling-recommendations)
     - [Package/project/environment management](#packageprojectenvironment-management)
     - [Automation of Code Quality](#automation-of-code-quality)
@@ -38,7 +40,7 @@ Prior to actions that affect code, these preliminary steps focus your work in te
     - If no standards have been adopted yet, consider introducing a brief standards document to start the process of alignment with the rest of your team. (But don't get distracted with creating a perfect set of standards or preemptively winning total buy-in from the team.)
     - If strong standards are already in place, review them carefully to understand how the remainder of this guide may need to be adapted to fit within them.
 
-### Burn Down Tech Debt in the Code Base
+### Burn Down Tech Debt
 
 The remaining work is the hardest and most time-consuming part of the repo facelift, in no particular order:
 - Identify gaps in unit testing.
