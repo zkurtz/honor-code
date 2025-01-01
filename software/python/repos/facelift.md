@@ -79,7 +79,7 @@ uv install pyright --group dev
 uv install debtcloset --group dev
 ```
 
-Copy-paste the following configurations to `pyproject.toml`:
+Copy-paste the following configurations into the `pyproject.toml` file:
 - [pyright](../devtools/pyright_pyproject.toml)
 - [ruff](../devtools/ruff_pyproject.toml)
 
