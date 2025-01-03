@@ -8,7 +8,7 @@ dev = [
   "pyright==1.1.391",
   "ruff==0.8.5",
   "pytest==8.3.4",
-  "debtcloset==0.4.0",
+  "debtcloset==0.4.1",
 ]
 
 #############
