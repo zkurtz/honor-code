@@ -95,7 +95,7 @@ exclude()
 ```
 and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This updates your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to control proliferation of rule violations in all new modules that are added to the repo.
 
-Set up `pre-commit` hooks to run these tools on every commit:
+Configure `pre-commit` as shown [here](../devtools/precommit_config.yaml) and enable running these tools on every commit:
 ```bash
 uv install pre-commit --group dev
 uv run pre-commit install
