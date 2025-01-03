@@ -69,7 +69,7 @@ Update the repo to rely on `uv` for all package/project/environment management t
     - `pyenv` including the `virtualenv` plugin
     - native python virtual env creation like `python -m venv ...` 
 
-Update your repo README.md file to clarify how to create and activate a virtual environment for the project. In many cases, [this gist](../envs/create_uv_venv.sh) will suffice.
+Update your repo README.md file to clarify how to create and activate a virtual environment for the project. In many cases, [this gist](create_venv.sh) will suffice.
 
 
 ### Automation of Code Quality
