@@ -11,6 +11,11 @@ dev = [
   "debtcloset==0.3.0",
 ]
 
+#############
+# PACKAGE BUILD STUFF
+[tool.uv]
+package = true
+
 ##############
 # PYRIGHT
 [tool.pyright]
