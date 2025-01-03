@@ -98,9 +98,10 @@ Finally, remove any of the tools that `pyright` and `ruff` almost completely rep
 ### Continuous Integration
 
 Create/update GitHub continuous integration workflows, including:
-- Unit testing
-- Code quality checks
-- TODO: add more here, including links to good github workflow examples.
+1. Unit testing: create at least one unit test and run it with `pytest`.
+1. Add code quality checks and unit testing to your github CI by creating a `.github/workflows` directory and adding [this file](../github/workflows/ci.yml) to it.
+1. Copy [this tox config](tox.ini) into the root of your repo and copy [this github workflow](../github/workflows/tox.yml) into your `.github/workflows` directory.
+1. Push changes to github. After all workflows have run at least once, go into github settings -> branch protection rules and update your rule to require each of these workflows to pass as part of required status checks.
 
 ### Package Build and Distribution Strategy
 
