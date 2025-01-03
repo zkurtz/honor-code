@@ -78,11 +78,11 @@ Merge [these configs](pyproject.toml) into your `pyproject.toml` file to configu
 
 Create a simple python script `exclude_qa_failing_modules.py` somewhere in your repo like
 ```python
-from debtcloset.pyright.toml import exclude
-exclude(required_exclusions=[".venv/*", ".tox/*"])
+from debtcloset.pyright.toml import exclude as pyright_exclude
+from debtcloset.pyright.toml import exclude as ruff_exclude
 
-from debtcloset.pyright.toml import exclude
-exclude()
+pyright_exclude()
+ruff_exclude()
 ```
 and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This updates your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to prevent rule violations in all new modules that are added to the repo.
 
