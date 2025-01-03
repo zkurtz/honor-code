@@ -74,16 +74,7 @@ Update your repo README.md file to clarify how to create and activate a virtual 
 
 ### Automation of Code Quality
 
-Install static analysis code quality tools:
-```bash
-uv install ruff --group dev
-uv install pyright --group dev
-uv install debtcloset --group dev
-```
-
-Copy-paste the following configurations into the `pyproject.toml` file:
-- [pyright](../devtools/pyright_pyproject.toml)
-- [ruff](../devtools/ruff_pyproject.toml)
+Merge [these configs](pyproject.toml) into your `pyproject.toml` file to configure ruff, pyright, and other tools and run `uv sync --all-groups --all-extras`.
 
 Create a simple python script `exclude_qa_failing_modules.py` somewhere in your repo like
 ```python
@@ -95,11 +86,7 @@ exclude()
 ```
 and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This updates your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to prevent rule violations in all new modules that are added to the repo.
 
-Configure `pre-commit` as shown [here](../devtools/precommit_config.yaml) and enable running these tools on every commit:
-```bash
-uv install pre-commit --group dev
-uv run pre-commit install
-```
+Copy the `pre-commit` config [here](precommit_config.yaml) and install pre-commit to your git hooks: `uv run pre-commit install`.
 
 Activate your environment (as a habit, when working in your repo) to ensure that pre-commit is available to be used when you commit code:
 ```bash

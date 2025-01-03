@@ -1,5 +1,0 @@
-# insert into a `pyproject.toml` config to configure pyright:
-
-[tool.pyright]
-# docs: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-typeCheckingMode = "standard" # This is the default, but consider "basic" or "strict" as alternatives at the extremes
