@@ -1,8 +1,8 @@
 # Python Repo Facelift How-To
 
-You notice that disorganization in your repo is harming your team's morale and productivity. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
+Disorganization in your repo is harming your team's morale and productivity. Here is your step-by-step guide to delivering a repo "facelift", operating as quickly as possible and with minimal interruption to your team.
 
-A repo facelift in the best case unlocks long-term exponential growth in your team's ability to deliver software. However, consider carefully how to "sell" any facelift-related work:
+A repo facelift may unlock long-term exponential growth in your team's ability to deliver software. However, consider carefully how to "sell" any facelift-related work:
 - Do not: Expect it to be easy to convince others to prioritize facelift-type work. Pressures from above are usually more focused on the next feature or bug fix than on anything as vague as code "quality".
 - Do: Emphasize any improvements that have an obvious and measurable impact on the team's deliverables.
 - Do: Handle most other improvements as a kind of "overhead" to gradually address over time in parallel with deliverables.
@@ -93,7 +93,7 @@ exclude(required_exclusions=[".venv/*", ".tox/*"])
 from debtcloset.pyright.toml import exclude
 exclude()
 ```
-and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This updates your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to control proliferation of rule violations in all new modules that are added to the repo.
+and call it from your repo root directory like `python [path to script]/exclude_qa_failing_modules.py`. This updates your `pyproject.toml` file to explicitly exclude checks for all modules in your repo that currently fail pyright and/or ruff checks. You will come back to this later to fix files and burn down those lists, but for now you at least have the tools in place to prevent rule violations in all new modules that are added to the repo.
 
 Configure `pre-commit` as shown [here](../devtools/precommit_config.yaml) and enable running these tools on every commit:
 ```bash
