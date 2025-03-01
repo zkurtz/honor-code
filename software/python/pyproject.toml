@@ -63,6 +63,8 @@ line-length = 120
 select = [
   # ruff defaults:
   "E4", "E7", "E9", "F",
+  # pycodestyle line formatting including line length
+  "E5",
   # additional rule groups:
   "I", # flake8-import-order
   "TID", # flake8-tidy-imports
