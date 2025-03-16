@@ -68,9 +68,14 @@ select = [
   # additional rule groups:
   "I", # flake8-import-order
   "TID", # flake8-tidy-imports
-  "D", # google-style docstrings
+  "D", # google-style docstrings,
+  "ANN", # require pyright type annotations
 ]
 ignore = [
+  "ANN002", # Missing type annotation for *args
+  "ANN003", # Missing type annotation for **kwargs
+  "ANN101", # Missing type annotation for self in method
+  "ANN401", # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
   "D202", # would require one blank line after the last section of a multi-line docstring
   "D203", # would require one blank line at start of class docstring
   "D213", # would require multi-line docstring to start with a hard return
@@ -83,4 +88,7 @@ ban-relative-imports = "all"
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["D104"] # would require module-level documentation
-"test_*.py" = ["D"] # would put requirements on docstrings in test files
+"test_*.py" = [
+  "D", # would put requirements on docstrings in test files
+  "ANN201", # would require return type hint (normally None) for test functions
+]
