@@ -37,6 +37,11 @@ search = 'version = "{current_version}"'
 replace = 'version = "{new_version}"'
 
 ##############
+# PYTEST
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+
+##############
 # PYRIGHT
 [tool.pyright]
 # docs: https://github.com/microsoft/pyright/blob/main/docs/configuration.md
