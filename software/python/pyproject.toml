@@ -56,18 +56,16 @@ line-length = 120
 select = [
   # ruff defaults:
   "E4", "E7", "E9", "F",
-  # pycodestyle line formatting including line length
-  "E5",
   # additional rule groups:
+  "ANN", # require pyright type annotations
+  "D", # google-style docstrings
+  "E5", # pycodestyle line formatting including line length
   "I", # flake8-import-order
   "TID", # flake8-tidy-imports
-  "D", # google-style docstrings,
-  "ANN", # require pyright type annotations
 ]
 ignore = [
   "ANN002", # Missing type annotation for *args
   "ANN003", # Missing type annotation for **kwargs
-  "ANN101", # Missing type annotation for self in method
   "ANN401", # Dynamically typed expressions (typing.Any) are disallowed in `**kwargs`
   "D202", # would require one blank line after the last section of a multi-line docstring
   "D203", # would require one blank line at start of class docstring
@@ -82,6 +80,6 @@ ban-relative-imports = "all"
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["D104"] # would require module-level documentation
 "test_*.py" = [
-  "D", # would put requirements on docstrings in test files
   "ANN201", # would require return type hint (normally None) for test functions
+  "D", # would put requirements on docstrings in test files
 ]
