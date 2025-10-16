@@ -37,3 +37,7 @@ Follow the Google style guide for function docstrings.
 ## Conditionals
 
 Reorder to avoid negation: prefer `result = foo if condition else bar` instead of `result = bar if not condition else foo`.
+
+## Package preferences
+
+`click` is better than `argparse`
