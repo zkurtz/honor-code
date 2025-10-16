@@ -40,4 +40,10 @@ Reorder to avoid negation: prefer `result = foo if condition else bar` instead o
 
 ## Package preferences
 
-`click` is better than `argparse`
+`click` is better than `argparse`.
+
+## Pandas best practices
+
+Do not use `inplace=True`.
+
+When selecting rows from a DataFrame, use `.loc` or `.iloc` methods rather than direct bracket notation.
