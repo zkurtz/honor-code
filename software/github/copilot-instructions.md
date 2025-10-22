@@ -58,6 +58,7 @@ When selecting rows from a DataFrame, use `.loc` or `.iloc` methods rather than 
 
 Simple is better than complex:
 - Do not introduce try-except logic except where explicitly requested.
+- Do not create any empty `__init__.py` files unless explicitly requested.
 
 
 # SQL coding standard
