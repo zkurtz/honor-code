@@ -1,4 +1,6 @@
-# Coding standards
+# Python coding standard
+
+Follow the google Python style guide except where overridden by the rules below.
 
 ## Type hinting
 
@@ -38,6 +40,10 @@ Follow the Google style guide for function docstrings.
 
 Reorder to avoid negation: prefer `result = foo if condition else bar` instead of `result = bar if not condition else foo`.
 
+Do not use `==` for comparison to boolean values:
+- Instead of `if is_valid == True:`, use `if is_valid:`.
+- Instead of `df[df['col'] == False]`, use `df[~df['col']]`.
+
 ## Package preferences
 
 `click` is better than `argparse`.
@@ -47,3 +53,16 @@ Reorder to avoid negation: prefer `result = foo if condition else bar` instead o
 Do not use `inplace=True`.
 
 When selecting rows from a DataFrame, use `.loc` or `.iloc` methods rather than direct bracket notation.
+
+## Zen
+
+Simple is better than complex:
+- Do not introduce try-except logic except where explicitly requested.
+- Do not create any empty `__init__.py` files unless explicitly requested.
+
+
+# SQL coding standard
+
+Use CTEs instead of subqueries wherever possible.
+
+Do not alias table names unless there is a naming conflict or if line length exceeds 120 characters.
