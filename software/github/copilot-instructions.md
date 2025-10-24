@@ -2,6 +2,20 @@
 
 Follow the google Python style guide except where overridden by the rules below.
 
+## PRs
+
+Always run the following prior to submitting a PR:
+```
+ruff format
+ruff check --fix
+```
+
+Also attempt to get the static analysis tools passing before requesting PR review:
+```
+ruff check
+pyright  # or whatever type checker is configured in pyproject.toml
+```
+
 ## Type hinting
 
 - Apply type hints to all function parameters and return values, including in unit test modules.
